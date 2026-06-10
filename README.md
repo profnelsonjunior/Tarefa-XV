@@ -1,3 +1,6 @@
+Trabalho Prático - Semana 14
+
+
 Personalização do site com Integração de Login de Usuário
 Nesta atividade, vamos integrar ao projeto o módulo de login, cujo código já é fornecido com o repositório compartilhado para a atividade. A partir dessa integração, vamos implementar uma funcionalidade adicional de personalização para marcação e exibição de itens favoritos.
 
