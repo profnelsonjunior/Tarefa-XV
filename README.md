@@ -1,44 +1,22 @@
-# Trabalho Prático - Semana 14
+Personalização do site com Integração de Login de Usuário
+Nesta atividade, vamos integrar ao projeto o módulo de login, cujo código já é fornecido com o repositório compartilhado para a atividade. A partir dessa integração, vamos implementar uma funcionalidade adicional de personalização para marcação e exibição de itens favoritos.
 
-Apresentação dinâmica e avançada de dados
-A partir dos dados cadastrados na etapa anterior, vamos trabalhar formas de apresentação que representem de forma clara e interativa as informações do seu projeto. Você poderá usar gráficos (barra, linha, pizza), mapas, calendários ou outras formas de visualização. Seu desafio é entregar uma página Web que organize, processe e exiba os dados de forma compreensível e esteticamente agradável.
+A seguir, apresentamos mais detalhes sobre o módulo de login, seu funcionamento e como você pode integrar novas funcionalidades no seu projeto.
 
-Com base nos tipos de projetos escolhidos, podemos propor visualizações que estimulem a interpretação, agrupamento e exibição criativa dos dados, trabalhando tanto a lógica quanto o design das nossas aplicações.
+Módulo de Login
+O módulo de login de usuário, fornecido no repositório da atividade, inclui funcionalidades como o formulário de registro de usuários e o processo de validação de login e senha.
 
-Abaixo, são apresentadas sugestões de visualizações para exemplos de projeto, com ideias que podem ser realizadas com ferramentas acessíveis como FullCalendarLinks to an external site., Chart.jsLinks to an external site., MapboxLinks to an external site., para citar algumas.
+Para utilizar o módulo de login, basta incluir o script de login na sua home-page (index.html), colocando a seguinte tag dentro do elemento HEAD:
 
-📰 Notícias
-Gráfico de barras com número de notícias por categoria: Ex: política, economia, cultura, esportes.  [Chart,js]
-Calendário com notícias por dia de publicação: Visualização das notícias do dia, tanto por mês como por lista. [FullCalendar]
-Mapa com local de origem das notícias (se houver localidade): Notícias por cidade ou país. [Mapbox]
-🎬 Filmes
-Gráfico de pizza por gênero: Distribuição de filmes por gênero (ação, comédia, drama…). [Chart,js]
-Gráfico de barras com avaliação média por ano ou por gênero: Útil se tiverem campos como nota e ano de lançamento. [Chart,js]
-Mapa com os locais dos filmes: Informando onde foram filmados ou o país de origem da produção. [Mapbox]
-🍽️ Receitas
-Gráfico de pizza mostrando o percentual de receitas por categoria culinária: Ex: doces, salgados, bebidas, massas.  [Chart,js]
-Gráfico de barras por tempo de preparo: Agrupar receitas por tempo (ex: até 30min, 1h…).  [Chart,js]
-Mapa  das receitas: Informação da localização típica ou origem da receita. [Mapbox]
-🏞️ Lugares Turísticos
-Mapa interativo com marcadores dos locais: Usar Mapbox. [Mapbox]
-Gráfico de barras com atrações por cidade ou país: Quantidade de pontos turísticos por região. [Chart,js]
-Gráfico de avaliação média por lugar: Visualizar os locais mais bem avaliados. [Chart,js]
-📅 Eventos
-Calendário interativo com datas dos eventos: Visualização dos eventos em um calendário. [FullCalendar]
-Gráfico de eventos por tipo (show, palestra, workshop…): Gráfico de pizza ou barras.   [Chart,js]
-Mapa com localização dos eventos: Especialmente útil se os eventos forem em diferentes cidades. [Mapbox]
- 
+<script src="./assets/js/login.js"><script>
+Os dados de usuários são carregados a partir do JSON Server quando o script de login inicializa, usando fetch('/usuarios') dentro da função initLoginApp() localizada no arquivo login.js. Inicialmente o banco de dados é configurado com dois usuários:
 
-## Informações Gerais
+Login: admin | Senha: 123
+Login: user | Senha: 123
+A dinâmica de funcionamento do módulo de login é a seguinte:
 
-- Nome:
-- Matricula:
-
-## Prints do trabalho
-
-<<  COLOQUE A IMAGEM - TELA DE CARDS DE PRODUTOS - AQUI >>
-
-<<  COLOQUE A IMAGEM - TELA DE DETALHE DO PRODUTO - AQUI >>
-
-<<  COLOQUE A IMAGEM - TELA DO CONSOLE - AQUI >>
-
+Ao carregar a Home-page, o script verifica se o usuário já efetuou login. Em caso negativo, o navegador é direcionado para o formulário de validação de login e senha (/modulos/login/index.html). 
+Quando o usuário informa login e senha, a função loginUser(login, senha) procura o usuário nos dados e valida a senha. Se a senha estiver correta, o script monta o objeto usuarioCorrente,  salva no sessionStorage e direciona o Navegador para a Home-Page (index.html). O objeto usuarioCorrente tem os seguintes atributos: id, nome, login, senha e email.
+Uma vez carregada a home-page com o usuário validado, pode-se personalizar a apresentação para exibir os dados do usuário logado via dados mantidos no objeto usuarioCorrente.
+Para fazer logoff, a função logoutUser() apaga os dados do objeto usuarioCorrente no sessionStorage, redirecionando o Navegador para o formulário de validação de login e senha.
+💡 Você pode alterar a dinâmica básica utilizando as funções disponíveis e documentadas no arquivo login.js.
